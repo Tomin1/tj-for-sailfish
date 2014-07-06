@@ -1,5 +1,5 @@
 Tänään jäljellä laskuri Sailfishille (Jollalle)
-==============================================
+===============================================
 
 Tämä on ollut kehityksessä jo helmikuusta asti ja testissä jatkuvasti eli
 pitäisi toimia varsin luotettavasti
@@ -13,7 +13,8 @@ Tukee seuraavia ominaisuuksia:
 Tulevia ominaisuuksia voisivat olla:
  - Haluttaessa automaattinen tallennus pois päältä ja tallennus vain
    PulleyMenusta
- - About-sivu
+ - Jonkunlainen kuvake (tämän kun saan, niin voin julkaista sovelluksen
+   Harbourissa)
  - Lisää saapumiseriä sitä mukaa, kun niitä tulee
  - Julkaisu Harbourissa
 

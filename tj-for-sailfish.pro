@@ -19,5 +19,6 @@ OTHER_FILES += qml/tj-for-sailfish.qml \
     rpm/tj-for-sailfish.yaml \
     tj-for-sailfish.desktop \
     qml/tj/script.js \
-    qml/tj/settings.js
+    qml/tj/settings.js \
+    qml/pages/AboutPage.qml
 
