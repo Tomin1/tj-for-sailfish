@@ -1,0 +1,4 @@
+*.swp
+rpm/tj-for-sailfish.spec
+tj-for-sailfish.pro.user
+tj-for-sailfish.pro.user.*

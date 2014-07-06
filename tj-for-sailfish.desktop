@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Name=Tänään jäljellä
+Icon=tj-for-sailfish
+Exec=tj-for-sailfish
