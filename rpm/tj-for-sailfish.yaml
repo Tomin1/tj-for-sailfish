@@ -1,14 +1,14 @@
-Name: tj-for-sailfish
+Name: harbour-tj-for-sailfish
 Summary: "T\xE4n\xE4\xE4n j\xE4ljell\xE4"
-Version: 0.1
+Version: 1.0
 Release: 1
 Group: Qt/Qt
-URL: http://example.org/
+URL: https://github.com/Tomin1/tj-for-sailfish
 License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my SailfishOS Application
+  Tänään jäljellä sovellus Sailfishille. Laskee varusmiespalveluksen jäljellä olevat aamut.
 Configure: none
 Builder: qtc5
 PkgConfigBR:
@@ -24,6 +24,6 @@ Files:
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - /usr/bin
-- /usr/share/tj-for-sailfish
+- /usr/share/%{name}
 - /usr/share/applications
 - /usr/share/icons/hicolor/86x86/apps

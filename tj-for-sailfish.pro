@@ -6,19 +6,25 @@
 #         - desktop icon filename must be changed
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
-TARGET = tj-for-sailfish
+TARGET = harbour-tj-for-sailfish
 
 CONFIG += sailfishapp
 
-SOURCES += src/tj-for-sailfish.cpp
+SOURCES += \
+    src/tj-for-sailfish.cpp
 
-OTHER_FILES += qml/tj-for-sailfish.qml \
+OTHER_FILES += \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     rpm/tj-for-sailfish.spec \
     rpm/tj-for-sailfish.yaml \
-    tj-for-sailfish.desktop \
     qml/tj/script.js \
     qml/tj/settings.js \
-    qml/pages/AboutPage.qml
+    qml/pages/AboutPage.qml \
+    qml/harbour-tj-for-sailfish.qml \
+    harbour-tj-for-sailfish.desktop
 
+INSTALLS += target qml desktop icon
+
+desktop.files = $${TARGET}.desktop
+desktop.path = /usr/share/applications
