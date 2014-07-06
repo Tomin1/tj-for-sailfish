@@ -13,13 +13,17 @@ Tukee seuraavia ominaisuuksia:
 Tulevia ominaisuuksia voisivat olla:
  - Haluttaessa automaattinen tallennus pois päältä ja tallennus vain
    PulleyMenusta
- - Jonkunlainen kuvake (tämän kun saan, niin voin julkaista sovelluksen
-   Harbourissa)
  - Lisää saapumiseriä sitä mukaa, kun niitä tulee
- - Julkaisu Harbourissa
 
 Käännöksiä en aio lisätä, koska ohjelman kohdeyleisö on suomenkielistä ja se
 olisi varsin turhaa. 
 
-Lisensoitu GPLv3:lla tai haluttaessa uudemmalla. Lue LICENSE-tiedosto koko
-lisenssiä varten. 
+Tekijänoikeudet ja lisenssi
+===========================
+Lisensoitu GPLv3:lla tai haluttaessa uudemmalla ellei toisin sanottu. Lue
+LICENSE-tiedosto koko lisenssiä varten. 
+
+Kuvake on tehty Sailfishin kuvakepohjaa muokkaamalla. 
+
+Jolla ja Sailfish ovat Jolla Ltd. tavaramerkkejä tai rekisteröityjä
+tavaramerkkejä. 
