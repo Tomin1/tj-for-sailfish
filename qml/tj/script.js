@@ -66,10 +66,16 @@ function Era(str) {
             tj = tj + 1;
         return tj;
     };
+
+    this.palvelusta_kayty = function(palvelusaika, tj) {
+        if (tj !== null)
+            return palvelusaika - tj;
+        return palvelusaika - this.tj();
+    }
 }
 
 function set_values(vuosi, era, palvelusaika, palvelukseenastumispaiva,
-                    kotiutumispaiva, tanaan_jaljella) {
+                    kotiutumispaiva, tanaan_jaljella, palvelusta_kayty) {
     if (vuosi.currentItem === null)
         return;
     var v = vuosi.currentItem.value;
@@ -80,7 +86,7 @@ function set_values(vuosi, era, palvelusaika, palvelukseenastumispaiva,
     kotiutumispaiva.value = sp.lopetus_paiva(a);
     tj = sp.tj(a);
     tanaan_jaljella.value = tj;
-
+    palvelusta_kayty.value = sp.palvelusta_kayty(a, tj);
 }
 
 function get_date_string(date) {

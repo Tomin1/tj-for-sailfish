@@ -67,9 +67,8 @@ Page {
                 }
                 onCurrentItemChanged: {
                     TJ.set_values(vuosi, era, palvelusaika,
-                                  palvelukseenastumispaiva,
-                                  kotiutumispaiva,
-                                  tanaan_jaljella);
+                                  palvelukseenastumispaiva,  kotiutumispaiva,
+                                  tanaan_jaljella, palvelusta_kayty);
                     if (vuosi.firstTimeSkipped)
                         Settings.set(LocalStorage, "vuosi",
                                  vuosi.currentIndex.toString());
@@ -95,9 +94,8 @@ Page {
                 }
                 onCurrentItemChanged: {
                     TJ.set_values(vuosi, era, palvelusaika,
-                                  palvelukseenastumispaiva,
-                                  kotiutumispaiva,
-                                  tanaan_jaljella);
+                                  palvelukseenastumispaiva, kotiutumispaiva,
+                                  tanaan_jaljella, palvelusta_kayty);
                     if (era.firstTimeSkipped)
                         Settings.set(LocalStorage, "era",
                                      era.currentIndex.toString());
@@ -127,9 +125,8 @@ Page {
                 }
                 onCurrentItemChanged:  {
                     TJ.set_values(vuosi, era, palvelusaika,
-                                  palvelukseenastumispaiva,
-                                  kotiutumispaiva,
-                                  tanaan_jaljella);
+                                  palvelukseenastumispaiva, kotiutumispaiva,
+                                  tanaan_jaljella, palvelusta_kayty);
                     if (palvelusaika.firstTimeSkipped)
                         Settings.set(LocalStorage, "palvelusaika",
                                      palvelusaika.currentIndex.toString());
@@ -189,6 +186,24 @@ Page {
                 color: Theme.highlightColor
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
+            Label {
+                id: text_palvelusta_kayty
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.primaryColor
+                text: "Palvelusta käyty"
+            }
+
+            Label {
+                id: palvelusta_kayty
+                property int value
+                text: (
+                    value !== null ? value.toString() +
+                        (value != 1 ?  " vuorokautta" : "vuorokausi") : "N/A"
+                )
+                color: Theme.highlightColor
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
         }
     }
 
@@ -207,8 +222,7 @@ Page {
                         LocalStorage, "palvelusaika"));
         else
             palvelusaika.currentIndex = palvelusaika.defaultIndex;
-        TJ.set_values(vuosi, era, palvelusaika,
-                      palvelukseenastumispaiva,
-                      kotiutumispaiva, tanaan_jaljella);
+        TJ.set_values(vuosi, era, palvelusaika, palvelukseenastumispaiva,
+                      kotiutumispaiva, tanaan_jaljella, palvelusta_kayty);
     }
 }
