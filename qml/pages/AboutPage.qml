@@ -42,7 +42,7 @@ Dialog {
                 id: label
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.primaryColor
-                font: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
                 text: "Tänään jäljellä sovellus SailfishOS:lle. \
 Laskee jäljellä olevat varusmiespalveluksen aamut."
                 width: parent.width - Theme.paddingLarge * 2
@@ -56,7 +56,7 @@ Laskee jäljellä olevat varusmiespalveluksen aamut."
                 id: text
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.secondaryColor
-                font: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
                 text: "Tekijänoikeudet © Tomi Leppänen, 2014<br />
 Lisenssi: GNU General Public License versio 3 tai uudempi versio"
                 width: parent.width - Theme.paddingLarge * 2
@@ -69,7 +69,7 @@ Lisenssi: GNU General Public License versio 3 tai uudempi versio"
             Label {
                 id: link
                 anchors.horizontalCenter: parent.horizontalCenter
-                font: Theme.fontSizeSmall
+                font.pixelSize: Theme.fontSizeSmall
                 textFormat: Text.RichText
                 text: "<style>a:link {color: " + Theme.highlightColor + ";}\
 </style><a href=\"https://github.com/Tomin1/tj-for-sailfish\">\
