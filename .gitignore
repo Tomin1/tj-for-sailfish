@@ -1,4 +1,4 @@
 *.swp
-rpm/tj-for-sailfish.spec
+*.spec
 tj-for-sailfish.pro.user
 tj-for-sailfish.pro.user.*

@@ -22,7 +22,9 @@ OTHER_FILES += \
     qml/tj/settings.js \
     qml/pages/AboutPage.qml \
     qml/harbour-tj-for-sailfish.qml \
-    harbour-tj-for-sailfish.desktop
+    harbour-tj-for-sailfish.desktop \
+    rpm/harbour-tj-for-sailfish.yaml \
+    rpm/harbour-tj-for-sailfish.spec
 
 INSTALLS += target qml desktop icon
 
