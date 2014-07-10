@@ -10,10 +10,8 @@ Tukee seuraavia ominaisuuksia:
  - Automaattinen tallennus
  - Kaikki saapumiserät 2013-2016
 
-Tulevia ominaisuuksia voisivat olla:
- - Haluttaessa automaattinen tallennus pois päältä ja tallennus vain
-   PulleyMenusta
- - Lisää saapumiseriä sitä mukaa, kun niitä tulee
+Mahdollisia tulevia ominaisuuksia on listattuna Issues-listassa (Githubissa). 
+Saapumiseriä pitää lisäillä sitä mukaa, kun niitä tulee. 
 
 Käännöksiä en aio lisätä, koska ohjelman kohdeyleisö on suomenkielistä ja se
 olisi varsin turhaa. 
