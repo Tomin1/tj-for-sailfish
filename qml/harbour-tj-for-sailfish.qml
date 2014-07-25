@@ -19,8 +19,11 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 import "pages"
+import "tj/script.js" as TJ
+import QtQuick.LocalStorage 2.0
+import "tj/settings.js" as Settings
 
 ApplicationWindow {
-    initialPage: Component { FirstPage { } }
+    initialPage: Component { InfoPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }

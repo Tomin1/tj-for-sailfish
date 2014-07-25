@@ -18,20 +18,31 @@
 
 .pragma library
 
+var defaults = {
+    'vuosi': (new Date()).getFullYear(),
+    'era': ((new Date()).getMonth() < 6 ? 0 : 1),
+    'palvelusaika': 165
+}
+
 function getDb(LS) {
     return LS.openDatabaseSync("TJ", "1.0", "SettingsDatabase", 1000);
 }
 
+var init_done = false;
 function init(LS) {
+    if (init_done)
+        return;
     var db = getDb(LS);
     db.transaction(function(cur) {
         cur.executeSql(
             "CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value TEXT);"
         );
     });
+    init_done = true;
 }
 
 function set(LS, setting, value) {
+    init(LS);
     var db = getDb(LS);
     var result = "";
     db.transaction(function(cur) {
@@ -47,6 +58,7 @@ function set(LS, setting, value) {
 }
 
 function get(LS, setting) {
+    init(LS);
     var db = getDb(LS);
     var result = "";
     db.transaction(function(cur) {
@@ -54,9 +66,9 @@ function get(LS, setting) {
             "SELECT value FROM settings WHERE setting=?;", [setting]
         );
         if (rs.rows.length > 0)
-            result = rs.rows.item(0).value;
+            result = parseInt(rs.rows.item(0).value);
         else
-            result = false;
+            result = defaults[setting];
     });
     return result;
 }

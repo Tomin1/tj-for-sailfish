@@ -1,4 +1,5 @@
 *.swp
 *.spec
+*.spec.*
 tj-for-sailfish.pro.user
 tj-for-sailfish.pro.user.*

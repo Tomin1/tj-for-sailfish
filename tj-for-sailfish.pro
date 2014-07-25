@@ -15,8 +15,6 @@ SOURCES += \
 
 OTHER_FILES += \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    rpm/tj-for-sailfish.spec \
     rpm/tj-for-sailfish.yaml \
     qml/tj/script.js \
     qml/tj/settings.js \
@@ -24,7 +22,9 @@ OTHER_FILES += \
     qml/harbour-tj-for-sailfish.qml \
     harbour-tj-for-sailfish.desktop \
     rpm/harbour-tj-for-sailfish.yaml \
-    rpm/harbour-tj-for-sailfish.spec
+    rpm/harbour-tj-for-sailfish.spec \
+    qml/pages/InfoPage.qml \
+    qml/pages/SettingsPage.qml
 
 INSTALLS += target qml desktop icon
 
