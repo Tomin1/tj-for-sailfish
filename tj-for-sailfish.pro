@@ -14,11 +14,11 @@ SOURCES += src/tj-for-sailfish.cpp
 
 OTHER_FILES += qml/tj-for-sailfish.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    rpm/tj-for-sailfish.spec \
     rpm/tj-for-sailfish.yaml \
     tj-for-sailfish.desktop \
     qml/tj/script.js \
     qml/tj/settings.js \
-    qml/pages/AboutPage.qml
+    qml/pages/AboutPage.qml \
+    qml/pages/InfoPage.qml \
+    qml/pages/SettingsPage.qml
 

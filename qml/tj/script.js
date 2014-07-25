@@ -29,7 +29,14 @@ var saapumiserat = {
     "2016/2": new Era("2016-07-04"),
 };
 
+var vuosi = null;
+var era = null;
+var palvelusaika = null;
 var tj = null;
+
+function get_saapumisera() {
+    return saapumiserat[vuosi.toString() + "/" + era.toString()];
+}
 
 function Era(str) {
     var osat = str.split("-");
@@ -71,22 +78,19 @@ function Era(str) {
         if (tj !== null)
             return palvelusaika - tj;
         return palvelusaika - this.tj();
-    }
+    };
 }
 
-function set_values(vuosi, era, palvelusaika, palvelukseenastumispaiva,
-                    kotiutumispaiva, tanaan_jaljella, palvelusta_kayty) {
-    if (vuosi.currentItem === null)
+function set_values(palvelukseenastumispaiva, kotiutumispaiva,
+                    tanaan_jaljella, palvelusta_kayty) {
+    if (vuosi === null || era === null || palvelusaika === null)
         return;
-    var v = vuosi.currentItem.value;
-    var e = era.currentItem.value;
-    var a = palvelusaika.currentItem.value;
-    var sp = saapumiserat[v.toString() + "/" + e.toString()];
+    var sp = get_saapumisera();
     palvelukseenastumispaiva.value = sp.aloitus_paiva();
-    kotiutumispaiva.value = sp.lopetus_paiva(a);
-    tj = sp.tj(a);
+    kotiutumispaiva.value = sp.lopetus_paiva(palvelusaika);
+    tj = sp.tj(palvelusaika);
     tanaan_jaljella.value = tj;
-    palvelusta_kayty.value = sp.palvelusta_kayty(a, tj);
+    palvelusta_kayty.value = sp.palvelusta_kayty(palvelusaika, tj);
 }
 
 function get_date_string(date) {
