@@ -30,7 +30,7 @@ Page {
     }
     onStatusChanged: {
         TJ.set_values(palvelukseenastumispaiva, kotiutumispaiva,
-                      tanaan_jaljella, palvelusta_kayty)
+                      tanaan_jaljella, palvelusta_kayty, paivan_pokemon)
     }
 
     SilicaFlickable {
@@ -126,7 +126,21 @@ Page {
                 color: Theme.highlightColor
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
+            Label {
+                id: text_paivan_pokemon
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.primaryColor
+                text: "Päivän pokemon"
+            }
+
+            Label {
+                id: paivan_pokemon
+                property string value
+                text: value !== "N/A" ? value : "Ei ole"
+                color: Theme.highlightColor
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
         }
     }
 }
-
