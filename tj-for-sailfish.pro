@@ -22,7 +22,6 @@ OTHER_FILES += \
     qml/harbour-tj-for-sailfish.qml \
     harbour-tj-for-sailfish.desktop \
     rpm/harbour-tj-for-sailfish.yaml \
-    rpm/harbour-tj-for-sailfish.spec \
     qml/pages/InfoPage.qml \
     qml/pages/SettingsPage.qml
 
