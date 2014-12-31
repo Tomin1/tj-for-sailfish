@@ -78,7 +78,7 @@ Page {
                 id: text_kotiutumispaiva
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: Theme.primaryColor
-                text: "Kotitumispäivä"
+                text: "Kotiutumispäivä"
             }
 
             Label {
