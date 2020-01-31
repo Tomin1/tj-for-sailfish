@@ -1,5 +1,13 @@
 *.swp
-*.spec
 *.spec.*
 tj-for-sailfish.pro.user
 tj-for-sailfish.pro.user.*
+Makefile
+documentation.list
+harbour-tj-for-sailfish
+installroot/
+*.o
+*.png
+*.list
+/RPMS/
+/installroot/

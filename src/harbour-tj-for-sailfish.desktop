@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Name=Tänään jäljellä
+Icon=harbour-tj-for-sailfish
+Exec=sailfish-qml harbour-tj-for-sailfish
+
+[X-Sailjail]
+OrganizationName=site.tomin.apps
+ApplicationName=TJForSailfish
+Permissions=
