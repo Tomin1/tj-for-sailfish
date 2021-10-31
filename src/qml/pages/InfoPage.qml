@@ -1,11 +1,10 @@
 /**
  * TJ for Sailfish
- * Copyright (c) 2014, Tomi Leppänen
+ * Copyright (c) 2014, 2021 Tomi Leppänen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation, either version 3 of the License.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -18,23 +17,13 @@
 
 import QtQuick 2.1
 import Sailfish.Silica 1.0
-import "../tj/script.js" as TJ
 import QtQuick.LocalStorage 2.0
-import "../tj/settings.js" as Settings
+import ".."
 
 Page {
-    Component.onCompleted: {
-        TJ.vuosi = Settings.get(LocalStorage, "vuosi");
-        TJ.era = Settings.get(LocalStorage, "era");
-        TJ.palvelusaika = Settings.get(LocalStorage, "palvelusaika");
-    }
-    onStatusChanged: {
-        TJ.set_values(palvelukseenastumispaiva, kotiutumispaiva,
-                      tanaan_jaljella, palvelusta_kayty, paivan_pokemon)
-    }
-
     SilicaFlickable {
         anchors.fill: parent
+        bottomMargin: Theme.paddingLarge
         contentHeight: column.height
 
         PullDownMenu {
@@ -44,103 +33,108 @@ Page {
             }
 
             MenuItem {
-                text: "Vaihda valintoja"
+                text: "Valinnat"
                 onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
             }
         }
 
         Column {
             id: column
-            anchors.horizontalCenter: parent.horizontalCenter
+
             spacing: Theme.paddingSmall
             width: parent.width
 
             PageHeader {
-                title: "Tänään jäljellä"
+                title: "Palveluksesi"
             }
 
             Label {
-                id: text_palvelukseenastumispaiva
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
+                color: Theme.secondaryHighlightColor
                 text: "Palvelukseenastumispäivä"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: palvelukseenastumispaiva
-                property date value
-                text: value !== null ? TJ.get_date_string(value) : "N/A"
                 color: Theme.highlightColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                text: tj.palvelukseenastumispaiva.toLocaleDateString()
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: text_kotiutumispaiva
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
+                color: Theme.secondaryHighlightColor
                 text: "Kotiutumispäivä"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: kotiutumispaiva
-                property date value
-                text: value !== null ? TJ.get_date_string(value) : "N/A"
                 color: Theme.highlightColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                text: tj.kotiutumispaiva.toLocaleDateString()
+                horizontalAlignment: Text.AlignHCenter
+                height: implicitHeight + Theme.paddingLarge
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: text_tanaan_jaljella
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
+                color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
                 text: "Tänään jäljellä"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: tanaan_jaljella
-                property int value
-                text: (
-                    value !== null ? value.toString() +
-                                    (value != 1 ? " aamua" : " aamu") : "N/A"
-                )
+                color: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
-                color: Theme.highlightColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                text: tj.tj + (tj.tj == 1 ? " aamu" : " aamua")
+                height: implicitHeight + Theme.paddingLarge
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: text_palvelusta_kayty
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
+                color: Theme.secondaryHighlightColor
                 text: "Palvelusta käyty"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: palvelusta_kayty
-                property int value
-                text: (
-                    value !== null ? value.toString() +
-                        (value != 1 ?  " vuorokautta" : "vuorokausi") : "N/A"
-                )
                 color: Theme.highlightColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                text: tj.kayty + (tj.kayty == 1 ? " vuorokausi" : " vuorokautta")
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: text_paivan_pokemon
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
+                color: Theme.secondaryHighlightColor
                 text: "Päivän pokemon"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
 
             Label {
-                id: paivan_pokemon
-                property string value
-                text: value !== "N/A" ? value : "Ei ole"
                 color: Theme.highlightColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                text: tj.pokemoni ? tj.pokemoni : "Ei ole"
+                horizontalAlignment: Text.AlignHCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
             }
         }
+    }
+
+    TanaanJaljella {
+        id: tj
     }
 }

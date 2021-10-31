@@ -1,11 +1,10 @@
 /**
  * TJ for Sailfish
- * Copyright (c) 2014, Tomi Leppänen
+ * Copyright (c) 2014, 2021 Tomi Leppänen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation, either version 3 of the License.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,64 +18,121 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 
-Dialog {
-    id: about_page
+Page {
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: about_column.height
+        contentHeight: column.height
+        bottomMargin: Theme.paddingLarge
+
         Column {
-            id: about_column
+            id: column
             width: parent.width
             spacing: Theme.paddingSmall
 
-            DialogHeader {
+            PageHeader {
                 title: "Tietoja sovelluksesta"
-                acceptText: "Takaisin"
-                cancelText: "Takaisin"
             }
 
             SectionHeader {
                 text: "Kuvaus"
             }
+
             Label {
-                id: label
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.primaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                text: "Tänään jäljellä sovellus SailfishOS:lle. \
+                color: Theme.secondaryHighlightColor
+                text: "Aamukampasovellus Sailfish-käyttöjärjestelmälle. \
 Laskee jäljellä olevat varusmiespalveluksen aamut."
-                width: parent.width - Theme.paddingLarge * 2
-                wrapMode: Text.WordWrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
+                wrapMode: Text.Wrap
             }
 
             SectionHeader {
-                text: "Tekijänoikeudet ja lisensointi"
-            }
-            Text {
-                id: text
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: Theme.secondaryColor
-                font.pixelSize: Theme.fontSizeSmall
-                text: "Tekijänoikeudet © Tomi Leppänen, 2014<br />
-Lisenssi: GNU General Public License versio 3 tai uudempi versio"
-                width: parent.width - Theme.paddingLarge * 2
-                wrapMode: Text.WordWrap
+                text: "Kehitys"
             }
 
-            SectionHeader {
-                text: "Lähdekoodi"
-            }
             Label {
-                id: link
-                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.secondaryHighlightColor
+                linkColor: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeSmall
-                textFormat: Text.RichText
-                text: "<style>a:link {color: " + Theme.highlightColor + ";}\
-</style><a href=\"https://github.com/Tomin1/tj-for-sailfish\">\
-https://github.com/Tomin1/tj-for-sailfish</a>"
-                onLinkActivated: Qt.openUrlExternally(link)
-                width: parent.width - Theme.paddingLarge * 2
-                wrapMode: Text.WordWrap
+                text: "Kehittäjä: <a href=\"https://github.com/Tomin1\">Tomi Leppänen</a><br />
+Lisenssi: <a href=\"#\">GNU General Public License versio 3</a><br />
+Lähdekoodi: <a href=\"https://github.com/Tomin1/tj-for-sailfish\">github.com/Tomin1/tj-for-sailfish</a>"
+                textFormat: Text.StyledText
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
+                wrapMode: Text.Wrap
+
+                onLinkActivated: {
+                    if (link == "#") {
+                        pageStack.push(licensePage, {
+                            "contentFile": Qt.resolvedUrl("../../COPYING")
+                        })
+                    } else {
+                        Qt.openUrlExternally(link)
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: licensePage
+
+        Page {
+            property url contentFile
+
+            allowedOrientations: Orientation.All
+
+            function load() {
+                var xhr = new XMLHttpRequest
+                xhr.open("GET", contentFile)
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        content.text = xhr.responseText
+                    }
+                }
+                xhr.send()
+            }
+
+            onStatusChanged: if (status == PageStatus.Active) load()
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                running: content.text === ""
+                size: BusyIndicatorSize.Large
+            }
+
+            SilicaFlickable {
+                anchors.fill: parent
+                contentHeight: authorsContent.height
+
+                Column {
+                    id: authorsContent
+                    width: parent.width
+
+                    PageHeader {
+                        title: "GNU GPLv3"
+                        description: "GNU General Public License version 3"
+                    }
+
+                    Label {
+                        id: content
+                        color: Theme.highlightColor
+                        font.pixelSize: Theme.fontSizeSmall
+                        wrapMode: Text.Wrap
+                        x: Theme.horizontalPageMargin
+                        width: parent.width - 2 * x
+                        opacity: content.text !== "" ? 1.0 : 0.0
+                        Behavior on opacity {
+                            FadeAnimator {
+                                duration: 500
+                                easing.type: Easing.InOutQuad
+                            }
+                        }
+                    }
+                }
+
+                VerticalScrollDecorator { }
             }
         }
     }

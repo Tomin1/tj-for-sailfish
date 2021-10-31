@@ -1,11 +1,10 @@
 /**
  * TJ for Sailfish
- * Copyright (c) 2014, Tomi Leppänen
+ * Copyright (c) 2014, 2021 Tomi Leppänen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation, either version 3 of the License.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,9 +18,6 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 import "pages"
-import "tj/script.js" as TJ
-import QtQuick.LocalStorage 2.0
-import "tj/settings.js" as Settings
 
 ApplicationWindow {
     initialPage: Component { InfoPage { } }
