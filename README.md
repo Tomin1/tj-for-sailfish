@@ -1,27 +1,44 @@
-Tänään jäljellä laskuri Sailfishille (Jollalle)
-===============================================
+Tänään jäljellä -laskuri Sailfish-käyttöjärjestelmälle
+======================================================
+For English readme, see [README.en.md](README.en.md).
 
-Tämä on ollut kehityksessä jo helmikuusta asti ja testissä jatkuvasti eli
-pitäisi toimia varsin luotettavasti
-
-Tukee seuraavia ominaisuuksia:
- - Näyttää palvelukseenastumispäivän, kotiutumispäivän ja aamujen määrän 
+Tämä on aamukampasovellus Sailfish-käyttöjärjestelmälle. Se tukee mm. seuraavia ominaisuuksia:
+ - Näyttää palvelukseenastumispäivän, kotiutumispäivän ja aamujen määrän sekä päivän pokemonin
  - Cover, jossa aamujen määrä
- - Automaattinen tallennus
- - Kaikki saapumiserät 2013-2016
 
-Mahdollisia tulevia ominaisuuksia on listattuna Issues-listassa (Githubissa). 
-Saapumiseriä pitää lisäillä sitä mukaa, kun niitä tulee. 
+***Etsin uutta ylläpitäjää sovellukselle. Jos olet kiinnostunut, laita viestiä vaikkapa
+sähköpostilla. Suurin tarve on ylläpitää listaa palveluseristä, mutta uusiakin ominaisuuksia voi
+miettiä. Siirrän myös Harbour-sovelluksen hallinnan uudelle ylläpitäjälle.***
 
-Käännöksiä en aio lisätä, koska ohjelman kohdeyleisö on suomenkielistä ja se
-olisi varsin turhaa. 
+Usein kysytyt kysymykset
+------------------------
+Tässä vastauksia joihinkin kysyttyihin kysymyksiin.
 
-Tekijänoikeudet ja lisenssi
-===========================
-Lisensoitu GPLv3:lla tai haluttaessa uudemmalla ellei toisin sanottu. Lue
-LICENSE-tiedosto koko lisenssiä varten. 
+### Miksi sovellusta ei ole saatavilla esimerkiksi englanniksi tai ruotsiksi?
+Tämä sovellus on toteutettu QML-kielellä ja sailfish-qml ei tue käännösten lataamista.
+Lisäksi en ole selvittänyt erilaisten käytettyjen termien nimiä englanniksi tai ruotsiksi.
 
-Kuvake on tehty Sailfishin kuvakepohjaa muokkaamalla. 
+### Miksi koodissa on suomea? Eikö se ole huono tapa?
+No joo. Onhan se sitäkin. Tässä on sama syy kuin ylemmässä eli en ole viitsinyt selvittää termejä
+englanniksi, joten koodissa käytetyt muuttujat ovat sekakielisiä. Olisihan se kivempi, jos koodi
+olisi yhtenäistä.
 
-Jolla ja Sailfish ovat Jolla Ltd. tavaramerkkejä tai rekisteröityjä
-tavaramerkkejä. 
+Oman version kääntäminen
+------------------------
+Tämä onnistuu helposti [Sailfish SDK:n](https://sailfishos.org/wiki/Sailfish_SDK) sfdk-komennolla.
+Valitse ensin haluttu target:
+
+    sfdk config --push target SailfishOS-4.1.0.24-i486
+
+Ja käännä paketti:
+
+    sfdk build
+
+Asenna luotu paketti laitteellesi.
+
+Lisenssi
+--------
+Kaikki koodi on GNU General Public License versio 3. Lue [COPYING](COPYING)-tiedosto koko lisenssiä
+varten.
+
+Kuvake on tehty Sailfishin kuvakepohjaa muokkaamalla.
