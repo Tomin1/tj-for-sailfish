@@ -9,8 +9,8 @@ Frequently Asked Questions
 Here you may find some answers to questions asked from me.
 
 ### Why is this app not available in English or some other language?
-This app is written in QML and it uses sailfish-qml which doesn't support loading translations.
-Additionally I have not tried to figure out the terms used in the app in English.
+I have not tried to figure out the terms used in the app in English, so there hasn't been need for
+translations.
 
 ### Why is some of the code in Finnish? Wouldn't it be better to write it completely in English?
 Again, I haven't figured out those terms in English so it was much easier to keep using Finnish for

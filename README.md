@@ -15,8 +15,8 @@ Usein kysytyt kysymykset
 Tässä vastauksia joihinkin kysyttyihin kysymyksiin.
 
 ### Miksi sovellusta ei ole saatavilla esimerkiksi englanniksi tai ruotsiksi?
-Tämä sovellus on toteutettu QML-kielellä ja sailfish-qml ei tue käännösten lataamista.
-Lisäksi en ole selvittänyt erilaisten käytettyjen termien nimiä englanniksi tai ruotsiksi.
+En ole selvittänyt erilaisten käytettyjen termien nimiä englanniksi tai ruotsiksi, joten
+käännöksille ei ole ollut tarvetta.
 
 ### Miksi koodissa on suomea? Eikö se ole huono tapa?
 No joo. Onhan se sitäkin. Tässä on sama syy kuin ylemmässä eli en ole viitsinyt selvittää termejä
