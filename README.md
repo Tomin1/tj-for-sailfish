@@ -7,7 +7,7 @@ Tämä on aamukampasovellus Sailfish-käyttöjärjestelmälle. Se tukee mm. seur
  - Cover, jossa aamujen määrä
 
 ***Etsin uutta ylläpitäjää sovellukselle. Jos olet kiinnostunut, laita viestiä vaikkapa
-sähköpostilla. Suurin tarve on ylläpitää listaa palveluseristä, mutta uusiakin ominaisuuksia voi
+sähköpostilla. Suurin tarve on ylläpitää listaa saapumiseristä, mutta uusiakin ominaisuuksia voi
 miettiä. Siirrän myös Harbour-sovelluksen hallinnan uudelle ylläpitäjälle.***
 
 Usein kysytyt kysymykset
