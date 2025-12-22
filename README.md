@@ -10,35 +10,29 @@ Tämä on aamukampasovellus Sailfish-käyttöjärjestelmälle. Se tukee mm. seur
 sähköpostilla. Suurin tarve on ylläpitää listaa saapumiseristä, mutta uusiakin ominaisuuksia voi
 miettiä. Siirrän myös Harbour-sovelluksen hallinnan uudelle ylläpitäjälle.***
 
-Usein kysytyt kysymykset
+Kysymyksiä ja vastauksia
 ------------------------
 Tässä vastauksia joihinkin kysyttyihin kysymyksiin.
 
 ### Miksi sovellusta ei ole saatavilla esimerkiksi englanniksi tai ruotsiksi?
-En ole selvittänyt erilaisten käytettyjen termien nimiä englanniksi tai ruotsiksi, joten
-käännöksille ei ole ollut tarvetta.
+Tämä sovellus on kirjoitettu suomenkielisille suomalaisille asevelvollisille,
+enkä tiedä erilaisten käytettyjen termien nimiä englanniksi tai ruotsiksi.
+Jos sinulla on parempaa tietoa, niin voit toki osallistua ja tehdä vaikkapa PR:n.
 
 ### Miksi koodissa on suomea? Eikö se ole huono tapa?
-No joo. Onhan se sitäkin. Tässä on sama syy kuin ylemmässä eli en ole viitsinyt selvittää termejä
-englanniksi, joten koodissa käytetyt muuttujat ovat sekakielisiä. Olisihan se kivempi, jos koodi
-olisi yhtenäistä.
+No joo. Onhan se sitäkin.
+Tässä on sama syy kuin ylemmässä, eli en ole selvittänyt termejä englanniksi,
+joten koodissa käytetyt muuttujat ovat sekakielisiä.
+Olisihan se kivempi, jos koodi olisi yhtenäistä.
+PR:iä otetaan vastaan.
 
 Oman version kääntäminen
 ------------------------
-Tämä onnistuu helposti [Sailfish SDK:n](https://sailfishos.org/wiki/Sailfish_SDK) sfdk-komennolla.
-Valitse ensin haluttu target:
-
-    sfdk config --push target SailfishOS-4.1.0.24-i486
-
-Ja käännä paketti:
-
-    sfdk build
-
-Asenna luotu paketti laitteellesi.
+Voit kääntää oman paketin [Sailfish SDK:lla](https://sailfishos.org/wiki/Sailfish_SDK).
 
 Lisenssi
 --------
-Kaikki koodi on GNU General Public License versio 3. Lue [COPYING](COPYING)-tiedosto koko lisenssiä
-varten.
+Kaikki koodi on GNU General Public License versio 3.
+Lue [COPYING](COPYING)-tiedosto koko lisenssiä varten.
 
 Kuvake on tehty Sailfishin kuvakepohjaa muokkaamalla.
