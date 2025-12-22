@@ -18,21 +18,15 @@ Requires: libsailfishapp-launcher
 %{summary} on aamukampasovellus Sailfish-käyttöjärjestelmälle.
 
 %prep
-%autosetup -n %{name}-%{version}/%{name}
+%autosetup -n %{name}-%{version}
 
 %build
 %qmake5
 
+%make_build
+
 %install
 %qmake5_install
-
-for size in 86 108 128 172
-do
-    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
-    rsvg-convert --width=$size --height=$size --output \
-        %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{name}.png \
-        src/tj-for-sailfish.svg
-done
 
 %files
 %defattr(-,root,root,-)
