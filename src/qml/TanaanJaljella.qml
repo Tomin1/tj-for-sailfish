@@ -1,6 +1,6 @@
 /**
  * TJ for Sailfish
- * Copyright (c) 2021 Tomi Leppänen
+ * Copyright (c) 2021, 2025 Tomi Leppänen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,11 +23,29 @@ Item {
     property alias era: eraValue.value
     property alias palvelusaika: palvelusaikaValue.value
 
+    readonly property var paivat: {
+        var paivat = []
+        var nykyinenVuosi = (new Date()).getFullYear();
+        for (var vuosi = nykyinenVuosi - 2; vuosi <= nykyinenVuosi + 5; ++vuosi) {
+            for (var kuukausi = 0; kuukausi < 7; kuukausi += 6) {
+                var paiva = new Date(vuosi, kuukausi, 1);
+                while (paiva.getDay() !== 1) {
+                    paiva.setDate(paiva.getDate() + 1);
+                }
+                if (paiva.getDate() > 7 || paiva.getMonth() != kuukausi || paiva.getFullYear() != vuosi) {
+                    console.warn("Väärä päivä", paiva)
+                }
+
+                paivat.push(paiva)
+            }
+        }
+        return paivat
+    }
     readonly property var vuodet: {
         var vuodet = []
-        for (var i = 0; i < saapumiserat.count; i++) {
-            if (vuodet[vuodet.length - 1] != saapumiserat.get(i).vuosi)
-                vuodet[vuodet.length] = saapumiserat.get(i).vuosi
+        var nykyinenVuosi = (new Date()).getFullYear();
+        for (var vuosi = nykyinenVuosi - 2; vuosi <= nykyinenVuosi + 5; ++vuosi) {
+            vuodet[vuodet.length] = vuosi
         }
         return vuodet
     }
@@ -92,7 +110,15 @@ Item {
     ]
 
     readonly property int _VRKMS: 24 * 60 * 60 * 1000
-    readonly property date palvelukseenastumispaiva: vuosi, era, new Date(etsi(vuosi, era).palvelukseenastumispaiva)
+    readonly property date palvelukseenastumispaiva: {
+        var kuukausi = era.toString() == "1" ? 0 : 6
+        for (var i = 0; i < paivat.length; i++) {
+            if (paivat[i].getFullYear().toString() == vuosi.toString() && paivat[i].getMonth() == kuukausi) {
+                return paivat[i]
+            }
+        }
+        return new Date("1970-01-01")
+    }
     readonly property date kotiutumispaiva: palvelukseenastumispaiva, palvelusaika, summaa(palvelukseenastumispaiva, palvelusaika)
     readonly property int tj: {
         var nyt = new Date()
@@ -126,118 +152,10 @@ Item {
         return pokemonit[i]
     }
 
-    function etsi(vuosi, era) {
-        for (var i = 0; i < saapumiserat.count; i++) {
-            if (saapumiserat.get(i).vuosi.toString() == vuosi && saapumiserat.get(i).era.toString() == era) {
-                return saapumiserat.get(i)
-            }
-        }
-    }
-
     function summaa(pvm, paivia) {
         var vastaus = new Date()
         vastaus.setTime(pvm.getTime() + (paivia - 1) * _VRKMS)
         return vastaus
-    }
-
-    ListModel {
-        id: saapumiserat
-
-        ListElement {
-            era: 1
-            vuosi: 2019
-            palvelukseenastumispaiva: "2019-01-06"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2019
-            palvelukseenastumispaiva: "2019-07-01"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2020
-            palvelukseenastumispaiva: "2020-01-06"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2020
-            palvelukseenastumispaiva: "2020-07-06"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2021
-            palvelukseenastumispaiva: "2021-01-04"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2021
-            palvelukseenastumispaiva: "2021-07-05"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2022
-            palvelukseenastumispaiva: "2022-01-03"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2022
-            palvelukseenastumispaiva: "2022-07-04"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2023
-            palvelukseenastumispaiva: "2023-01-02"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2023
-            palvelukseenastumispaiva: "2023-07-03"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2024
-            palvelukseenastumispaiva: "2024-07-08"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2024
-            palvelukseenastumispaiva: "2024-07-08"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2025
-            palvelukseenastumispaiva: "2025-01-06"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2025
-            palvelukseenastumispaiva: "2025-07-07"
-        }
-
-        ListElement {
-            era: 1
-            vuosi: 2026
-            palvelukseenastumispaiva: "2026-01-05"
-        }
-
-        ListElement {
-            era: 2
-            vuosi: 2026
-            palvelukseenastumispaiva: "2026-07-06"
-        }
     }
 
     ConfigurationValue {
