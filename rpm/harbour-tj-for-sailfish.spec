@@ -1,6 +1,6 @@
 Name: harbour-tj-for-sailfish
 Summary: Tänään jäljellä
-Version: 1.2.0
+Version: 1.2.1
 Release: 1
 URL: https://github.com/Tomin1/tj-for-sailfish
 Source: %{name}-%{version}.tar.gz
